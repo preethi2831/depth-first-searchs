@@ -54,9 +54,37 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
 
-<hr>
+## Program:
+
+```python
+from collections import deque
+from collections import defaultdict
+
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+    for neighbour in graph[start]:
+        if visited[neighbour] == False:
+            dfs(graph, neighbour, visited, path)
+            visited[neighbour] = True
+    return path
+
+graph = defaultdict(list)
+n, e = map(int, input().split())
+for i in range(e):
+    u, v = map(str, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+# print(graph)
+start = "A"
+visited = defaultdict(bool)
+path = []
+traversedpath = dfs(graph, start, visited, path)
+print(traversedpath)
+```
+
 <h3>Sample Input</h3>
-<hr>
+
 8 9 <BR>
 A B <BR>
 A C <BR>
@@ -67,29 +95,28 @@ C G <BR>
 D F <BR>
 G F <BR>
 F H <BR>
-<hr>
+
 <h3>Sample Output</h3>
-<hr>
-['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
 
-<hr>
 
-<hr>
+<img width="867" height="497" alt="q" src="https://github.com/user-attachments/assets/fec25b9d-b861-40d2-aedb-81840f98c1f6" />
+
 <h3>Sample Input</h3>
-<hr>
+
 5 5 <BR>
 0 1 <BR>
 0 2 <BR>
 0 3 <BR>
 2 3 <BR>
 2 4 <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
-['0', '1', '2', '3', '4']
 
-<hr>
+<h3>Sample Output</h3>
+
+<img width="600" height="327" alt="w" src="https://github.com/user-attachments/assets/3c648b13-68ce-4b96-b5a8-6b6adf221e73" />
+
+
 <h3>Result:</h3>
-<hr>
+
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
+s constructed and implementation of Depth First Search for the same graph was done successfully.</p>
 
